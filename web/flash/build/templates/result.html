@@ -1,0 +1,24 @@
+{% extends 'background.html' %}
+{% block content %}
+<div class="text-center">
+  {% if error %}
+    <p class="text-danger">数値を正しく入力してください。</p>
+  {% elif submitted is defined %}
+    {% if success %}
+      <h1 class="text-success">正解！</h1>
+      <p><code>{{ FLAG }}</code></p>
+    {% else %}
+      <h1 class="text-danger">不正解</h1>
+      <p>回答: {{ submitted }} / 正解: {{ correct }}</p>
+    {% endif %}
+    <a href="{{ url_for('index') }}" class="btn btn-secondary mt-3">再挑戦</a>
+  {% else %}
+    <h2>合計を入力してください</h2>
+    <form method="post" class="w-50 mx-auto mt-3" action="{{ url_for('result') }}">
+      <input type="hidden" name="token" value="{{ token }}">
+      <input type="number" name="answer" class="form-control text-center" placeholder="合計を入力" autocomplete="off" autofocus required>
+      <button type="submit" class="btn btn-primary mt-3">送信</button>
+    </form>
+  {% endif %}
+</div>
+{% endblock %}

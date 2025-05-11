@@ -1,0 +1,21 @@
+{% extends 'background.html' %}
+{% block body_class %}
+  {% if visible %}bg-dark text-light{% else %}bg-white text-dark{% endif %}
+{% endblock %}
+{% block content %}
+<div class="text-center mb-4">
+  <h2>Round {{ round }} / {{ total }}</h2>
+</div>
+<div class="flash-box">
+  {% if visible %}
+    <div class="d-flex justify-content-center">
+      {% for d in digits %}
+        <img src="/images/number_{{ d }}.png" alt="{{ d }}" class="img-fluid mx-1" style="max-height:150px;">
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+<script>
+  setTimeout(() => window.location.href = "{{ url_for('flash') }}", 500);
+</script>
+{% endblock %}

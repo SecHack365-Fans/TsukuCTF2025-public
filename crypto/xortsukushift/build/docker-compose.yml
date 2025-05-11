@@ -1,0 +1,13 @@
+services:
+  xortsukushift:
+    build: .
+    ports:
+      - "30057:30057"
+    restart: always
+    env_file:
+      - .env
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 0.5g

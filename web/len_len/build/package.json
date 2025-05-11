@@ -1,0 +1,12 @@
+{
+  "name": "len_len",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "NODE_ENV=production node ./server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

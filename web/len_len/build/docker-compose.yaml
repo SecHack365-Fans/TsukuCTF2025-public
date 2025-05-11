@@ -1,0 +1,17 @@
+services:
+  lenlen:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "28888:28888"
+    restart: always
+    environment:
+      - HOST=challs.tsukuctf.org
+      - PORT=28888
+      - FLAG=TsukuCTF25{l4n_l1n_lun_l4n_l0n}
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 0.5g

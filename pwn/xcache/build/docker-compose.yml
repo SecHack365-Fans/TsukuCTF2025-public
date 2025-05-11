@@ -1,0 +1,13 @@
+services:
+  xcache:
+    build:
+      context: .
+    restart: always
+    ports:
+      - "19001:9001"
+    entrypoint: /etc/init.sh
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 0.5g

@@ -1,0 +1,13 @@
+services:
+  new_era:
+    build:
+      context: .
+    restart: always
+    ports:
+      - "19002:9002"
+    entrypoint: /etc/init.sh
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 0.5g

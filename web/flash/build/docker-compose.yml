@@ -1,0 +1,33 @@
+version: '3'
+services:
+  flash:
+    build: .
+    container_name: flash-web
+    volumes:
+      - ./:/var/www/flash
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=app.py
+    networks:
+      - flashnet
+  nginx:
+    image: nginx:latest 
+    container_name: flash-nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./static:/var/www/flash/static:ro
+    ports:
+      - "50000:80"
+    depends_on:
+      - flash
+    networks:
+      - flashnet
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 0.5g
+networks:
+  flashnet:
+    driver: bridge

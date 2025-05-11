@@ -1,0 +1,13 @@
+services:
+  easy_kernel:
+    build:
+      context: .
+    restart: always
+    ports:
+      - "19000:9000"
+    entrypoint: /etc/init.sh
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 0.5g

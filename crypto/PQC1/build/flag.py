@@ -1,0 +1,1 @@
+flag = b"TsukuCTF25{seed_5eed_s33d}"

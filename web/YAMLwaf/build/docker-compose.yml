@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  web:
+    build: .
+    working_dir: /app
+    ports:
+      - "50001:3000"
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 0.5g
